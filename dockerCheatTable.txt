@@ -1,0 +1,20 @@
+# Cointainers
+job-app
+# Controlls
+-t (tag to name the container.)´
+-p **:**(Port from container to local port)
+-v {local directory}:{docker directory}
+
+# Commands
+docker build -t {container name lowercase} .
+docker run -p 80:80 {container name}
+docker run -p 80:80 -v {local directory}:{docker directory} {container name} 
+
+docker ps # Active dockers running
+
+# Commands use for project
+docker build -t job-app .
+docker run -p 80:80 job-app
+docker run -p 80:80 -v /c/Users/Joao/Desktop/KWAN/Docker/src/:/var/www/html/ job-app 
+docker run -p 80:80 -v C:\Users\Joao\Desktop\KWAN\Docker\src\:/var/www/html/ job-app
+
