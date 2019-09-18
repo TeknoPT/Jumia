@@ -11,10 +11,18 @@ docker run -p 80:80 {container name}
 docker run -p 80:80 -v {local directory}:{docker directory} {container name} 
 
 docker ps # Active dockers running
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' {container name/id} 
+docker inspect 49c74e45aec6 | grep "IPAddress"
+ 
 
 # Commands use for project
 docker build -t job-app .
 docker run -p 80:80 job-app
-docker run -p 80:80 -v /c/Users/Joao/Desktop/KWAN/Docker/src/:/var/www/html/ job-app 
-docker run -p 80:80 -v C:\Users\Joao\Desktop\KWAN\Docker\src\:/var/www/html/ job-app
+docker run -p 80:80 -v /c/Users/Joao/Desktop/Jobs/KWAN/Jumia/Docker/src/:/var/ job-app 
+docker run -p 80:80 -v C:\Users\Joao\Desktop\Jobs\KWAN\Jumia\Docker\src\:/var/ job-app
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' job-app
+docker inspect job-app | grep "IPAddress"
+
+c\Users\Joao\Desktop\Jobs\KWAN\Jumia\Docker
+docker run -p 80:80 -v c\Users\Joao\Desktop\Jobs\KWAN\Jumia\Docker\src\:/var/ job-app 
 
