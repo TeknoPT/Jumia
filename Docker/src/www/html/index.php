@@ -3,9 +3,8 @@
 $goTo = $_REQUEST["path"];
 
 // Make routes here.
-
 switch (strtolower($goTo)){
-    case "teste": 
+    case "index.php": 
         require_once "controller/CostumerController.php";
         $cc = new CostumerController();
         $cc->show();

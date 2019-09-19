@@ -5,6 +5,10 @@ require_once "controller/DatabaseConnection.php";
 class Costumer 
 {
 
+    /**
+     * This method returns the list of things to fill the table on the fronted. 
+     * @author Tek
+     */
     public function listAll(){
         $db = new DatabaseConnection();
         $result = $db->query('SELECT * FROM customer');
@@ -33,6 +37,11 @@ class Costumer
         return $arryOutput;
     }
 
+    /**
+     * This method returns the country of phone number. 
+     * @param $phone -> a phone number example (253) 12487127213
+     * @author Tek
+     */
     private function getCountry ($phone){
         if ( preg_match("/\(237\)/", $phone) ) {
             return "Cameroon";
@@ -49,10 +58,20 @@ class Costumer
         }
     }
 
+    /**
+     * This method returns the country code of the phone number. 
+     * @param $phone -> a phone number example (253) 12487127213
+     * @author Tek
+     */
     private function getCountryCode($phone){
         return '+'.substr($phone, strpos($phone, "(")+1, strpos($phone, ")")-1);
     }
 
+    /**
+     * This method returns if the phone number is valid or invalid "OK" or "NOK". 
+     * @param $phone -> a phone number example (253) 12487127213
+     * @author Tek
+     */
     private function checkState($phone){
         if ( preg_match("/\(237\)\ ?[2368]\d{7,8}$/", $phone) ) {
             return "OK";
@@ -69,10 +88,19 @@ class Costumer
         }
     }
 
+    /**
+     * This method returns the phone number, removing the country number. 
+     * @param $phone -> a phone number example (253) 12487127213
+     * @author Tek
+     */
     private function getPhoneNumber($phone){
         return substr($phone, strpos($phone, ")")+1, strlen($phone));
     }
 
+    /**
+     * This method returns the list of the countrys. 
+     * @author Tek
+     */
     public function getListOfCountrys(){
         return $array = [
             [

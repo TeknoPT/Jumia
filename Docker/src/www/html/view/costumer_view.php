@@ -23,8 +23,9 @@
         </select>
 
         <select name="validNumber" id="validNumber">
-            <option>Valid phone numbers</option>
-            <option>Invalid phone numbers</option>
+            <option value="ALL">All phone numbers</option>
+            <option value="OK">Valid phone numbers</option>
+            <option value="NOK">Invalid phone numbers</option>
         </select>
     </div>
     <div>
@@ -56,13 +57,18 @@
 
     <script>
         $(document).ready( function () {
+            /* Using Datatable */
             var myTable = $('#table').DataTable({
                 "order": [
                     [ 0, "asc"],
                     [ 1, "desc" ]
-                ]
+                ],
+                "search": {
+                    "regex": true
+                }
             } );
             
+            /* If select country has been changed */
             $("#country").on('change', function(e) {
                 var searchThis = $("#country option:selected").text();
                 if ($('select[name=country]').val() == -1){
@@ -70,6 +76,18 @@
                 }
                 
                 myTable.column(0).search(searchThis);
+                myTable.draw();
+            });
+
+            /* If select validNumber has been changed */
+            $("#validNumber").on('change', function(e) {
+                var searchThis = $('select[name=validNumber]').val();
+                if (searchThis == "ALL"){
+                    searchThis = "";
+                    myTable.column(1).search("");
+                }else {
+                    myTable.column(1).search("^" + searchThis + "$", true, true, false)
+                }
                 myTable.draw();
             });
 

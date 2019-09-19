@@ -8,6 +8,11 @@ RUN apt-get update -y && \
 RUN docker-php-ext-install pdo pdo_mysql
 RUN a2enmod rewrite
 
+# Installing phpunit test
+WORKDIR /var/www/html/
+RUN wget https://phar.phpunit.de/phpunit-8.3.phar \
+    & chmod +x phpunit-8.3.phar
+
 ADD src/ /var/
 ADD apache/ /
 
