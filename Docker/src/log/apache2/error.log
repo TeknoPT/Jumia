@@ -47,3 +47,4 @@ AH00558: apache2: Could not reliably determine the server's fully qualified doma
 [Wed Sep 18 14:49:53.811331 2019] [php7:error] [pid 35] [client 172.17.0.1:37104] script '/var/www/html/index.php' not found or unable to stat
 [Wed Sep 18 14:49:53.979550 2019] [php7:error] [pid 35] [client 172.17.0.1:37104] script '/var/www/html/index.php' not found or unable to stat
 [Wed Sep 18 14:49:54.130879 2019] [php7:error] [pid 35] [client 172.17.0.1:37104] script '/var/www/html/index.php' not found or unable to stat
+[Thu Sep 19 01:46:53.359090 2019] [mpm_prefork:notice] [pid 1] AH00170: caught SIGWINCH, shutting down gracefully
