@@ -42,7 +42,7 @@ class Costumer
      * @param $phone -> a phone number example (253) 12487127213
      * @author Tek
      */
-    private function getCountry ($phone){
+    public function getCountry ($phone){
         if ( preg_match("/\(237\)/", $phone) ) {
             return "Cameroon";
         } elseif ( preg_match("/\(251\)/", $phone) ) {
@@ -63,7 +63,7 @@ class Costumer
      * @param $phone -> a phone number example (253) 12487127213
      * @author Tek
      */
-    private function getCountryCode($phone){
+    public function getCountryCode($phone){
         return '+'.substr($phone, strpos($phone, "(")+1, strpos($phone, ")")-1);
     }
 
@@ -72,7 +72,7 @@ class Costumer
      * @param $phone -> a phone number example (253) 12487127213
      * @author Tek
      */
-    private function checkState($phone){
+    public function checkState($phone){
         if ( preg_match("/\(237\)\ ?[2368]\d{7,8}$/", $phone) ) {
             return "OK";
         } elseif ( preg_match("/\(251\)\ ?[1-59]\d{8}$/", $phone) ) {
@@ -93,7 +93,7 @@ class Costumer
      * @param $phone -> a phone number example (253) 12487127213
      * @author Tek
      */
-    private function getPhoneNumber($phone){
+    public function getPhoneNumber($phone){
         return substr($phone, strpos($phone, ")")+1, strlen($phone));
     }
 
